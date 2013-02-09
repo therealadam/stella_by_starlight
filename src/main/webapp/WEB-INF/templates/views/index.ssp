@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Stella by Starlight</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+    <style>
+      .container-narrow {
+          margin: 0 auto;
+          max-width: 700px;
+      }
+      .jumbotron {
+          margin: 60px 0;
+          text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-narrow">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+        <h3 class="muted">Stella by Starlight</h3>
+      </div>
+
+      <hr/>
+
+      <div class="jumbotron">
+        <h1><a name="#dashboard">Everything is OK.</a></h1>
+        <p class="lead">Don't panic!</p>
+      </div>
+
+      <hr/>
+
+      <div class="row-fluid events">
+        <div class="span6">
+          <h4>An event</h4>
+          <p>Things about an event.</p>
+          <h4>An event</h4>
+          <p>Things about an event.</p>
+          <h4>An event</h4>
+          <p>Things about an event.</p>
+        </div>
+        <div class="span6">
+          <h4>An event</h4>
+          <p>Things about an event.</p>
+          <h4>An event</h4>
+          <p>Things about an event.</p>
+          <h4>An event</h4>
+          <p>Things about an event.</p>
+        </div>
+      </div>
+
+      <hr/>
+
+      <div class="footer">
+        <p><a name="about">About Stella</a></p>
+
+        <p>Stella by Starlight is named after a Charles Mingus song. It's a little weekend prototype that uses Scala, Scalatra, Bootstrap, and D3 to make interesting things.</p>
+
+        <p>&copy; 2013 Adam Keys</p>
+      </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
