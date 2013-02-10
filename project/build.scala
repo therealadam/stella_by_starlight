@@ -22,6 +22,9 @@ object StellaByStarlightBuild extends Build {
       scalaVersion := ScalaVersion,
       resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
       libraryDependencies ++= Seq(
+        "com.github.nscala-time" %% "nscala-time" % "0.2.0",
+        "org.scalatra" %% "scalatra-json" % "2.2.0",
+        "org.json4s" %% "json4s-jackson" % "3.1.0",
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",

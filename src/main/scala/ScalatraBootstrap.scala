@@ -7,3 +7,4 @@ class ScalatraBootstrap extends LifeCycle {
     context.mount(new StellaServlet, "/*")
   }
 }
+
