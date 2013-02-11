@@ -1,5 +1,28 @@
 jQuery(function() {
+
   var stellaMetric = function(name) {
+    host = "http://localhost:8080"
+    return context.metric(function(start, stop, step, callback) {
+      path = "/api/metrics"
+        + "?start=" + d3.time.format.iso(start)
+        + "&stop=" + d3.time.format.iso(stop)
+        + "&step" + step;
+      d3.json(host + path,
+        function(data) {
+          if (!data) {
+            return callback(new Error("whups!"));
+          }
+
+          console.log(data);
+          values = data.map(function(d) { return d.value; });
+          // values = data.map(function(d) { return d.value }).slice((start - stop) / step);
+          callback(null, values);
+          console.log("stella", values);
+        });
+    }, name += "");
+  };
+
+  var randomMetric = function(name) {
     var value  = 0,
         values = [],
         i      = 0,
@@ -24,8 +47,10 @@ jQuery(function() {
       .step(1e3)
       .size(700);
 
-  var foo = stellaMetric("foo"),
-      bar = stellaMetric("bar");
+  // var foo = randomMetric("foo"),
+  //     bar = randomMetric("bar");
+  var foo = randomMetric("random"),
+      bar = stellaMetric("stella");
 
   d3.select("#graph").call(function(div) {
     div.append("div")

@@ -20,7 +20,10 @@ class StellaServlet extends StellaByStarlightStack with JacksonJsonSupport {
   }
   
   get("/api/metrics") {
-    MetricData.generate
+    // Rewrite this to take the start, stop, step parameters and pass
+    // them to the Scala version of the random number generator?
+    MetricData.generate(params("start").toDouble, params("stop").toDouble,
+      params("step").toDouble)
   }
 
 }
@@ -36,8 +39,23 @@ object MetricData {
     Metric("456", DateTime.now.toString())
   )
 
-  def generate = {
-    1 to 1000 map { i => Metric(i.toString(), DateTime.now.toString()) }
+  def generate(start: Double, stop: Double, step: Double) = {
+    var last: Double = start 
+    var value: Double = 0.0
+    var values: List[Double] = List()
+    var i: Int = 0
+
+    while (last < stop) {
+      last += step
+      i += 2
+      value = Math.max(-10.0,
+        Math.min(10.0, value + 0.8 * Math.random - 0.4 + 0.2 * Math.cos(i)))
+      value :: values
+    }
+    
+    values.slice(((start - stop) / step).toInt, values.length).map { v: Double =>
+      Metric(v.toString(), DateTime.now.toString())
+    }
   }
 
 }
